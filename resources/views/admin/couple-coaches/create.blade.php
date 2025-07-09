@@ -18,7 +18,7 @@
                             id="coach_homme_id" name="coach_homme_id" required>
                         <option value="">Sélectionner un coach homme</option>
                         @foreach($coachesHommes as $coach)
-                            <option value="{{ $coach->id }}" {{ old('coach_homme_id') == $coach->id ? 'selected' : '' }}>
+                            <option value="{{ $coach->id }}" >
                                 {{ $coach->prenoms }} {{ $coach->nom }} ({{ $coach->contact }})
                             </option>
                         @endforeach
@@ -34,7 +34,7 @@
                             id="coach_femme_id" name="coach_femme_id" required>
                         <option value="">Sélectionner une coach femme</option>
                         @foreach($coachesFemmes as $coach)
-                            <option value="{{ $coach->id }}" {{ old('coach_femme_id') == $coach->id ? 'selected' : '' }}>
+                            <option value="{{ $coach->id }}">
                                 {{ $coach->prenoms }} {{ $coach->nom }} ({{ $coach->contact }})
                             </option>
                         @endforeach

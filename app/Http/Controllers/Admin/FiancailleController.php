@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fiancailles;
+use App\Models\Fiance;
 use Illuminate\Http\Request;
 
 class FiancailleController extends Controller
@@ -23,6 +24,46 @@ class FiancailleController extends Controller
             'coachingStatuts' => \App\Models\Coaching::STATUTS
         ]);
     }
+
+   public function create()
+  { 
+        $etapeOptions = Fiancailles::$etapeOptions;
+        $vieEnsembleOptions = Fiancailles::$vieEnsembleOptions;
+        
+        // Liste des fiancés disponibles
+        $fiances = Fiance::where('sexe', 'M')
+            ->whereDoesntHave('fiancaillesHomme')
+            ->get();
+        $fiancees = Fiance::where('sexe', 'F')
+            ->whereDoesntHave('fiancaillesFemme')
+            ->get();
+        
+        return view('admin.fiancailles.create', compact(
+            'etapeOptions',
+            'vieEnsembleOptions',
+            'fiances',
+            'fiancees'
+        ));
+    }
+
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'fiance_id' => 'required|exists:fiances,id',
+        'fiancee_id' => 'required|exists:fiances,id|different:fiance_id',
+        'date_debut' => 'required|date',
+        'date_fin' => 'nullable|date|after_or_equal:date_debut',
+        'etape' => 'required|in:' . implode(',', array_keys(Fiancailles::$etapeOptions)),
+        'vie_ensemble' => 'required|in:' . implode(',', array_keys(Fiancailles::$vieEnsembleOptions)),
+    ]);
+
+    // Création des fiançailles
+    $fiancailles = Fiancailles::create($validated);
+
+    // Redirection vers la page de visualisation avec message de succès
+    return redirect()->route('admin.fiancailles.show', $fiancailles)
+        ->with('success', 'Fiançailles créées avec succès');
+}
 
     /**
      * Affiche les détails d'une fiançailles

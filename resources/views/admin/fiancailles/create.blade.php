@@ -19,7 +19,7 @@
                                 id="fiance_id" name="fiance_id" required>
                             <option value="">Sélectionner un fiancé</option>
                             @foreach($fiances as $fiance)
-                                <option value="{{ $fiance->id }}" {{ old('fiance_id') == $fiance->id ? 'selected' : '' }}>
+                                <option value="{{ $fiance->id }}">
                                     {{ $fiance->prenoms }} {{ $fiance->nom }}
                                 </option>
                             @endforeach
@@ -35,7 +35,7 @@
                                 id="fiancee_id" name="fiancee_id" required>
                             <option value="">Sélectionner une fiancée</option>
                             @foreach($fiancees as $fiancee)
-                                <option value="{{ $fiancee->id }}" {{ old('fiancee_id') == $fiancee->id ? 'selected' : '' }}>
+                                <option value="{{ $fiancee->id }}">
                                     {{ $fiancee->prenoms }} {{ $fiancee->nom }}
                                 </option>
                             @endforeach
@@ -61,7 +61,7 @@
                     <label for="etape" class="form-label">Étape actuelle *</label>
                     <select class="form-select @error('etape') is-invalid @enderror" 
                             id="etape" name="etape" required>
-                        @foreach(App\Models\Fiancailles::$etapeOptions as $value => $label)
+                        @foreach($etapeOptions as $value => $label)
                             <option value="{{ $value }}" {{ old('etape') == $value ? 'selected' : '' }}>
                                 {{ $label }}
                             </option>
@@ -77,7 +77,7 @@
                     <label for="vie_ensemble" class="form-label">Vivent-ils ensemble ? *</label>
                     <select class="form-select @error('vie_ensemble') is-invalid @enderror" 
                             id="vie_ensemble" name="vie_ensemble" required>
-                        @foreach(App\Models\Fiancailles::$vieEnsembleOptions as $value => $label)
+                        @foreach($vieEnsembleOptions as $value => $label)
                             <option value="{{ $value }}" {{ old('vie_ensemble') == $value ? 'selected' : '' }}>
                                 {{ $label }}
                             </option>
