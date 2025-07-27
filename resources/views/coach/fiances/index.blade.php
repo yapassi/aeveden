@@ -25,12 +25,8 @@
                     <div class="list-group-item p-3 border-bottom">
                         <div class="d-flex align-items-start gap-3">
                             <!-- Photo -->
-                             <!--<div class="flex-shrink-0">
+                             <div class="flex-shrink-0">
                                 <img src="{{ $fiance->photo ? asset('storage/' . $fiance->photo) : ($fiance->sexe === 'M' ? asset('images/default-male.png') : asset('images/default-female.png')) }}" 
-                                     class="rounded-circle" width="50" height="50" style="object-fit: cover" alt="Photo de {{ $fiance->prenoms }}">
-                            </div>-->
-                            <div class="flex-shrink-0">
-                                <img src="{{ ($fiance->sexe === 'M' ? asset('images/default-male.png') : asset('images/default-female.png')) }}" 
                                      class="rounded-circle" width="50" height="50" style="object-fit: cover" alt="Photo de {{ $fiance->prenoms }}">
                             </div>
                             
@@ -82,14 +78,11 @@
                             @foreach($fiances as $fiance)
                             <tr>
                                 <!-- Photo -->
-                                 <!--<td>
+                                 <td>
                                     <img src="{{ $fiance->photo ? asset('storage/' . $fiance->photo) : ($fiance->sexe === 'M' ? asset('images/default-male.png') : asset('images/default-female.png')) }}" 
                                          class="rounded-circle" width="40" height="40" style="object-fit: cover" alt="Photo de {{ $fiance->prenoms }}">
-                                </td>-->
-                                <td>
-                                    <img src="{{ ($fiance->sexe === 'M' ? asset('images/default-male.png') : asset('images/default-female.png')) }}" 
-                                         class="rounded-circle" width="40" height="40" style="object-fit: cover" alt="Photo de {{ $fiance->prenoms }}">
                                 </td>
+                                
                                 
                                 <!-- Nom + Prénoms -->
                                 <td>

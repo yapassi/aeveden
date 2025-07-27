@@ -22,10 +22,9 @@
                     </h5>
                 </div>
                 <div class="card-body text-center">
-                    <!--<img src="{{ $fiance->photo ? asset('storage/'.$fiance->photo) : ($fiance->sexe === 'M' ? asset('images/default-male.png') : asset('images/default-female.png')) }}" 
-                         class="rounded-circle mb-3 border" width="150" alt="Photo du fiancé">-->
-                         <img src="{{ ($fiance->sexe === 'M' ? asset('images/default-male.png') : asset('images/default-female.png')) }}" 
+                    <img src="{{ $fiance->photo ? asset('storage/'.$fiance->photo) : ($fiance->sexe === 'M' ? asset('images/default-male.png') : asset('images/default-female.png')) }}" 
                          class="rounded-circle mb-3 border" width="150" alt="Photo du fiancé">
+                         
                     <h3>{{ $fiance->prenoms }} {{ $fiance->nom }}</h3>
                     <p class="text-muted">{{ $fiance->profession }}</p>
                     
